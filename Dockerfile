@@ -7,6 +7,14 @@ WORKDIR /home/node
 # Expose n8n port
 EXPOSE 5678
 
+# Create n8n data directory as root and set ownership
+USER root
+RUN mkdir -p /mnt/mydisk/n8nData/.n8n \
+    && chown -R node:node /mnt/mydisk/n8nData/.n8n
+
+# Switch back to non-root user
+USER node
+
 # Copy .env file if you want to include local env variables (optional)
 # COPY .env .env
 
