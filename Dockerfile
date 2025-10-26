@@ -45,5 +45,7 @@ ENV GENERIC_TIMEZONE=Europe/Berlin \
 # Mount persistent folder (for Render, configure Persistent Disk in the dashboard)
 VOLUME ["/mnt/mydisk/n8nData/.n8n"]
 
-# Start n8n
-CMD ["n8n"]
+# Use the official n8n entrypoint; CMD can be left out or use "start"
+ENTRYPOINT ["tini", "--", "n8n"]
+CMD ["start"]
+
