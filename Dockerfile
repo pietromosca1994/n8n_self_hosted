@@ -16,7 +16,7 @@ RUN mkdir -p /mnt/mydisk/n8nData \
 USER node
 
 # Copy .env file if you want to include local env variables (optional)
-COPY .env .env
+# COPY .env .env
 
 # Set environment variables
 # NOTE render doesn't support IPv6
