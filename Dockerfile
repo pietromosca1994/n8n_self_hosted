@@ -31,6 +31,7 @@ ENV GENERIC_TIMEZONE=Europe/Berlin \
     N8N_BLOCK_ENV_ACCESS_IN_NODE=false \
     N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
     N8N_USER_FOLDER=/mnt/mydisk/n8nData \
+    N8N_ENCRYPTION_KEY=8f4a2b9c1e6d3f7a0b5c8e2d4f9a1b3c \
     WEBHOOK_TUNNEL_URL=https://n8n-self-hosted-hhe2.onrender.com \
     WEBHOOK_URL=https://n8n-self-hosted-hhe2.onrender.com \
     N8N_EDITOR_BASE_URL=https://n8n-self-hosted-hhe2.onrender.com \
@@ -39,10 +40,11 @@ ENV GENERIC_TIMEZONE=Europe/Berlin \
     DB_POSTGRESDB_PORT=6543 \
     DB_POSTGRESDB_DATABASE=postgres \
     DB_POSTGRESDB_USER=postgres.nwymkghybangtxtrbfdc \
+    DB_POSTGRESDB_PASSWORD=${DB_POSTGRESDB_PASSWORD} \
     DB_POSTGRESDB_SCHEMA=public \
     DB_POSTGRESDB_SSL=true \
     DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
-
+    
 # Mount persistent folder (for Render, configure Persistent Disk in the dashboard)
 VOLUME ["/mnt/mydisk/n8nData"]
 
