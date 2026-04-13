@@ -9,8 +9,8 @@ EXPOSE 5678
 
 # Create n8n data directory as root and set ownership
 USER root
-RUN mkdir -p /mnt/mydisk/n8nData/.n8n \
-    && chown -R node:node /mnt/mydisk/n8nData/.n8n
+RUN mkdir -p /mnt/mydisk/n8nData \
+    && chown -R node:node /mnt/mydisk/n8nData
 
 # Switch back to non-root user
 USER node
@@ -30,13 +30,13 @@ ENV GENERIC_TIMEZONE=Europe/Berlin \
     N8N_PROTOCOL=https \
     N8N_BLOCK_ENV_ACCESS_IN_NODE=false \
     N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
-    N8N_USER_FOLDER=/mnt/mydisk/n8nData/.n8n \
+    N8N_USER_FOLDER=/mnt/mydisk/n8nData \
     WEBHOOK_TUNNEL_URL=https://n8n-self-hosted-hhe2.onrender.com \
     WEBHOOK_URL=https://n8n-self-hosted-hhe2.onrender.com \
     N8N_EDITOR_BASE_URL=https://n8n-self-hosted-hhe2.onrender.com \
     DB_TYPE=postgresdb \
     DB_POSTGRESDB_HOST=aws-0-eu-central-1.pooler.supabase.com \
-    DB_POSTGRESDB_PORT=6543 \
+    DB_POSTGRESDB_PORT=5432 \
     DB_POSTGRESDB_DATABASE=postgres \
     DB_POSTGRESDB_USER=postgres.nwymkghybangtxtrbfdc \
     DB_POSTGRESDB_PASSWORD=${DB_POSTGRESDB_PASSWORD} \
@@ -44,7 +44,7 @@ ENV GENERIC_TIMEZONE=Europe/Berlin \
     DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
 
 # Mount persistent folder (for Render, configure Persistent Disk in the dashboard)
-VOLUME ["/mnt/mydisk/n8nData/.n8n"]
+VOLUME ["/mnt/mydisk/n8nData"]
 
 # Use the official n8n entrypoint; CMD can be left out or use "start"
 ENTRYPOINT ["tini", "--", "n8n"]
