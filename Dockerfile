@@ -35,15 +35,15 @@ ENV GENERIC_TIMEZONE=Europe/Berlin \
     WEBHOOK_URL=https://n8n-self-hosted-hhe2.onrender.com \
     N8N_EDITOR_BASE_URL=https://n8n-self-hosted-hhe2.onrender.com \
     DB_TYPE=postgresdb \
-    DB_POSTGRESDB_HOST=aws-0-eu-central-1.pooler.supabase.com \
-    DB_POSTGRESDB_PORT=5432 \
+    DB_POSTGRESDB_HOST=aws-1-eu-central-1.pooler.supabase.com \
+    DB_POSTGRESDB_PORT=6543 \
     DB_POSTGRESDB_DATABASE=postgres \
     DB_POSTGRESDB_USER=postgres.nwymkghybangtxtrbfdc \
     DB_POSTGRESDB_PASSWORD=${DB_POSTGRESDB_PASSWORD} \
     DB_POSTGRESDB_SCHEMA=public \
     DB_POSTGRESDB_SSL=true \
     DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
-    
+
 # Mount persistent folder (for Render, configure Persistent Disk in the dashboard)
 VOLUME ["/mnt/mydisk/n8nData"]
 
