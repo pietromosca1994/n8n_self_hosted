@@ -19,6 +19,7 @@ USER node
 COPY .env .env
 
 # Set environment variables
+# NOTE render doesn't support IPv6
 ENV GENERIC_TIMEZONE=Europe/Berlin \
     N8N_BASIC_AUTH_ACTIVE=false \
     N8N_USER_MANAGEMENT_DISABLED=true \
@@ -34,12 +35,12 @@ ENV GENERIC_TIMEZONE=Europe/Berlin \
     WEBHOOK_URL=https://n8n-self-hosted-hhe2.onrender.com \
     N8N_EDITOR_BASE_URL=https://n8n-self-hosted-hhe2.onrender.com \
     DB_TYPE=postgresdb \
-    DB_POSTGRESDB_HOST=db.nwymkghybangtxtrbfdc.supabase.co \
-    DB_POSTGRESDB_PORT=5432 \
+    DB_POSTGRESDB_HOST=aws-0-eu-central-1.pooler.supabase.com \
+    DB_POSTGRESDB_PORT=6543 \
     DB_POSTGRESDB_DATABASE=postgres \
     DB_POSTGRESDB_USER=postgres \
     DB_POSTGRESDB_PASSWORD=${DB_POSTGRESDB_PASSWORD} \
-    DB_POSTGRESDB_SSL_ENABLED=true \
+    DB_POSTGRESDB_SSL=true \
     DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
 
 # Mount persistent folder (for Render, configure Persistent Disk in the dashboard)
