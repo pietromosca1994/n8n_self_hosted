@@ -20,27 +20,25 @@ USER node
 
 # Set environment variables
 # NOTE render doesn't support IPv6
+# Set these in the Render dashboard (Environment), not here:
+#   N8N_ENCRYPTION_KEY, DB_POSTGRESDB_HOST, DB_POSTGRESDB_PORT (5432 = session pooler),
+#   DB_POSTGRESDB_USER, DB_POSTGRESDB_PASSWORD
 ENV GENERIC_TIMEZONE=Europe/Berlin \
     N8N_BASIC_AUTH_ACTIVE=false \
     N8N_USER_MANAGEMENT_DISABLED=true \
     N8N_SECURE_COOKIE=false \
     N8N_DISABLE_UI_LOGIN=true \
     N8N_HOST=n8n-self-hosted-hhe2.onrender.com  \
-    N8N_PORT=443 \
+    N8N_PORT=5678 \
     N8N_PROTOCOL=https \
     N8N_BLOCK_ENV_ACCESS_IN_NODE=false \
     N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
     N8N_USER_FOLDER=/mnt/mydisk/n8nData \
-    N8N_ENCRYPTION_KEY=8f4a2b9c1e6d3f7a0b5c8e2d4f9a1b3c \
     WEBHOOK_TUNNEL_URL=https://n8n-self-hosted-hhe2.onrender.com \
     WEBHOOK_URL=https://n8n-self-hosted-hhe2.onrender.com \
     N8N_EDITOR_BASE_URL=https://n8n-self-hosted-hhe2.onrender.com \
     DB_TYPE=postgresdb \
-    DB_POSTGRESDB_HOST=aws-1-eu-central-1.pooler.supabase.com \
-    DB_POSTGRESDB_PORT=6543 \
     DB_POSTGRESDB_DATABASE=postgres \
-    DB_POSTGRESDB_USER=postgres.nwymkghybangtxtrbfdc \
-    DB_POSTGRESDB_PASSWORD=${DB_POSTGRESDB_PASSWORD} \
     DB_POSTGRESDB_SCHEMA=public \
     DB_POSTGRESDB_SSL=true \
     DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
