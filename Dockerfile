@@ -20,7 +20,7 @@ USER node
 
 # Set environment variables
 # NOTE render doesn't support IPv6
-# Set these in the Render dashboard (Environment), not here:
+# Set these in the Render Secret File /etc/secrets/.env (loaded by ENTRYPOINT), not here:
 #   N8N_ENCRYPTION_KEY, DB_POSTGRESDB_HOST, DB_POSTGRESDB_PORT (5432 = session pooler),
 #   DB_POSTGRESDB_USER, DB_POSTGRESDB_PASSWORD
 ENV GENERIC_TIMEZONE=Europe/Berlin \
@@ -47,6 +47,5 @@ ENV GENERIC_TIMEZONE=Europe/Berlin \
 VOLUME ["/mnt/mydisk/n8nData"]
 
 # Use the official n8n entrypoint; CMD can be left out or use "start"
-ENTRYPOINT ["tini", "--", "n8n"]
-CMD ["start"]
+ENTRYPOINT ["tini", "--", "sh", "-c", "set -a; [ -f /etc/secrets/.env ] && . /etc/secrets/.env; set +a; exec n8n start"]
 
